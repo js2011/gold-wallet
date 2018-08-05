@@ -1,0 +1,28 @@
+{
+  "name": "prj-1",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "marax dev",
+    "build": "marax build",
+    "dll": "marax dll"
+  },
+  "dependencies": {
+    "@mfelibs/universal-framework": "^0.3.91",
+    "jquery": "^1.8.2",
+    "swiper": "^4.3.5",
+    "vue": "^2.5.3",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "webpack-marauder": "^1.8.3"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "license": "MIT",
+  "author": "galaa2011 <zhaopeng7@staff.sina.com.cn>",
+  "repository": ""
+}
