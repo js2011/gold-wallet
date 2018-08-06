@@ -367,39 +367,16 @@ export default {
     };
   },
   created() {
-    let vm = this;
-    this.$snc.fetch({
-      // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-      url:
-        "http://res.txingdai.com/appinfo/b114e4027afc43b89adcded84d470aa5?ts=1531811436150&start=0&limit=100",
-      success(data) {
-        // debugger
-        vm.feedData = data.data.list.sort(() => Math.random() >= 0.5);
-      },
-      error(e) {
-        // debugger
-      }
-    });
+    let vm = this
     vm.$snc.onPullDownRefresh({
-      success() {
-        vm.$snc.fetch({
-          // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-          url:
-            "http://res.txingdai.com/appinfo/b114e4027afc43b89adcded84d470aa5?ts=1531811436150&start=0&limit=100",
-          success(data) {
-            vm.feedData = data.data.list.sort(() => Math.random() >= 0.5);
-            vm.$snc.stopPullDownRefresh({
-              msg: `更新了${data.data.list.length}条信息`
-            });
-          },
-          error(e) {
-            vm.$snc.stopPullDownRefresh({
-              msg: `更新失败`
-            });
-          }
-        });
+      success () {
+        setTimeout(() => {
+          vm.$snc.stopPullDownRefresh({
+            msg: `更新了${10}条信息`
+          })
+        }, 500)
       }
-    });
+    })
   },
   methods: {
     jump(url) {

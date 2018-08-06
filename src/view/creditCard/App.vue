@@ -17,6 +17,6 @@ export default{
   .main {
     max-width: 750px;
     margin: 0 auto;
-    background: #f8f8f8;
+    background: #fff !important;
   }
 </style>

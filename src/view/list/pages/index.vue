@@ -11,7 +11,7 @@
       <section class="swiper-frt-mian swiper-container-horizontal">
         <div class="swiper-wrapper">
           <div class="swiper-slide slide-jk-box swiper-slide-active" style="width: 640px;">
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid')">
+            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '爆款推荐')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/1.png">
@@ -19,7 +19,7 @@
                 <p>爆款推荐</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid')">
+            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '无视黑白')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/2.png">
@@ -27,7 +27,7 @@
                 <p>无视黑白</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid')">
+            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '小额秒过')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/8.png">
@@ -35,7 +35,7 @@
                 <p>小额秒过</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid')">
+            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '免审放款')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/7.png">
@@ -191,8 +191,8 @@ export default {
     })
   },
   methods: {
-    jump (url, action = 'web') {
-      this.$snc.URLNavigateTo({id: url, url, action})
+    jump (url, action = 'web', title) {
+      this.$snc.URLNavigateTo({id: url, url, action, title})
     }
   },
   mounted() {

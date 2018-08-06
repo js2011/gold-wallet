@@ -1,8 +1,8 @@
 <template>
   <div class="credit-main">
-    <div @click="jump(credit.type, credit.link)">
+    <div @click="jump(credit.title, credit.link)">
       <div class="card-icon">
-        <img :src="require('../../../img/credit/' + credit.logo)">
+        <img :src="credit.logo">
       </div>
       <div class="card-info">
         <span class="title">{{credit.title}}</span>
@@ -21,11 +21,18 @@ export default {
     }
   },
   methods: {
-    jump (type = 'web', url) {
-      this.$snc.URLNavigateTo({
-        [type === 'web' ? 'url' : 'id']: url,
-        action: type
-      })
+    jump (title, url) {
+      switch (true) {
+        case title.indexOf('进度查询') != -1:
+          this.$snc.URLNavigateTo({id: 'bank', action: 'hybrid', title: '进度查询'})
+          break
+        case title.indexOf('电话服务') != -1:
+          this.$snc.URLNavigateTo({id: 'bank-service', action: 'hybrid', title: '电话服务'})
+          break
+        default:
+          this.$snc.URLNavigateTo({url, action: 'web'})
+          break
+      }
     }
   }
 };
@@ -41,24 +48,27 @@ export default {
     border-top: 1px solid #e7e7e7;
   }
   .card-icon {
-    height: 1.2rem;
+    height: 1.1rem;
     margin: 0 0.2rem;
   }
   .card-icon img {
     height: 100%;
   }
   .card-icon {
-    margin: 0 0.2rem;
+    margin: 0 0.1rem;
   }
   .card-info span{
     display: block;
     margin: 0.1rem 0;
   }
+  .card-info .info {
+    margin-top: 0.15rem;
+  }
   .card-info .title{
     font-weight: 700;
   }
   .card-info .info{
-    font-size: 0.2rem;
+    font-size: 0.23rem;
     font-weight: 400;
     color: rgb(185, 185, 185);
   }

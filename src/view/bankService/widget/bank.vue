@@ -2,7 +2,7 @@
   <div class="bank-main">
     <div @click="jump(bank.tels)">
       <span>{{bank.bankname}}</span>
-      <span>{{'>'}}</span>
+      <span><img class="icon-enter" :src="require('../../../img/credit/enter.png')"></span>
     </div>
   </div>
 </template>
@@ -32,8 +32,11 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin: 0 0.2rem;
-    padding: 0.15rem 0;
+    padding: 0.25rem 0;
     border-top: 1px solid #e7e7e7;
+  }
+  .icon-enter {
+    width: 0.4rem;
   }
 </style>
 

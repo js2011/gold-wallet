@@ -6,7 +6,7 @@
         <span class="number">{{tell.tel}}</span>
       </div>
       <a class="icon" :href="`tel://${tell.tel}`">
-        <img :src="require('../../../img/credit/tell.ico')">
+        <img :src="require('../../../img/credit/tell.png')">
       </a>
     </div>
   </div>
@@ -29,7 +29,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin: 0 0.2rem;
-    padding: 0.15rem 0;
+    padding: 0.2rem 0;
     border-bottom: 1px solid #e7e7e7;
   }
   .tell span {
