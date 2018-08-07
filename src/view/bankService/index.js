@@ -3,6 +3,9 @@ import App from './App'
 import appSNC from './import'
 import router from './router'
 
+import * as apis from '~/apis'
+appSNC.init('app', apis)
+
 // 引入css
 import '~/css/reset.css'
 

@@ -5,7 +5,7 @@
         <span class="name">{{tell.teltype}}</span>
         <span class="number">{{tell.tel}}</span>
       </div>
-      <a class="icon" :href="`tel://${tell.tel}`">
+      <a class="icon" :href="`tel://${tell.tel}`" @click="tellphone(tell.tel)">
         <img :src="require('../../../img/credit/tell.png')">
       </a>
     </div>
@@ -20,6 +20,11 @@ export default {
     }
   },
   methods: {
+    tellphone (tell) {
+      this.$snc.tellphone({
+        phoneNumber: tell
+      })
+    }
   }
 }
 </script>
