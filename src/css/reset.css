@@ -2,7 +2,7 @@
 /*css reset*/
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;-webkit-touch-callout: none;-webkit-user-select: none;-webkit-tap-highlight-color: transparent;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
 html { font-family:Microsoft YaHei ,Helvetica Neue, Helvetica , STHeiTi, Arial, sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 62.5%; line-height:1.5}
-body {font-size: 16px;overflow-x: hidden;min-width:320px; /*-webkit-overflow-scrolling: touch;*/color:#1a1a1a;background:#e8e8e8 }
+body {font-size: 16px;overflow-x: hidden;min-width:320px; /*-webkit-overflow-scrolling: touch;*/color:#1a1a1a;background:#F1F1F1 }
 a { text-decoration: none; color: #1a1a1a; -webkit-tap-highlight-color: transparent;}
 a:active { color: #3990e6;outline: 0; }
 

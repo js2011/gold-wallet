@@ -44,10 +44,10 @@
               </a>
             </div>
           </div>
-          <div class="swiper-slide slide-jk-box swiper-slide-next" style="width: 640px;">
+          <!-- <div class="swiper-slide slide-jk-box swiper-slide-next" style="width: 640px;">
             <div class="slide-jk-bul">
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
       <!-- 小额极速贷 -->
