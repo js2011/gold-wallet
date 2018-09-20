@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App'
 import appSNC from './import'
 
+import * as apis from '~/apis';
+appSNC.init('app', apis);
+
 // 引入css
 import '~/css/skpt_mian.css-v=3.4.4.css'
 import '~/css/style.css-v=3.4.4.css'
@@ -17,10 +20,10 @@ let vm = new Vue({
 
 appSNC.ready(data => {
   appSNC.hideLoading()
-  appSNC.enablePullDownRefresh({
-    theme: 'worldcup',
-    success (response) {
-			console.log('下拉刷新启用成功！')
-		}
-  })
+  // appSNC.enablePullDownRefresh({
+  //   theme: 'worldcup',
+  //   success (response) {
+	// 		console.log('下拉刷新启用成功！')
+	// 	}
+  // })
 })

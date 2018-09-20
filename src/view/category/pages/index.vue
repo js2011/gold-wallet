@@ -42,6 +42,12 @@ export default {
         // debugger
       }
     })
+    vm.$snc.enablePullDownRefresh({
+      // theme: 'worldcup',
+      success (response) {
+        console.log('下拉刷新启用成功！')
+      }
+    });
     vm.$snc.onPullDownRefresh({
       success () {
         vm.$snc.fetch({

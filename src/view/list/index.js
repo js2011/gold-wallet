@@ -4,6 +4,9 @@ import appSNC from './import'
 import wintip from 'wintip'
 import store from '~/store'
 
+import * as apis from '~/apis';
+appSNC.init('app', apis);
+
 // 引入css
 import '~/css/skpt_mian.css-v=3.4.4.css'
 import '~/css/style.css-v=3.4.4.css'
@@ -18,22 +21,23 @@ let vm = new Vue({
 })
 
 appSNC.ready(data => {
-  appSNC.login({
-    success (data) {}
-  })
+  appSNC.hideLoading();
+  // appSNC.login({
+  //   success (data) {}
+  // })
 	// ready 后初始化基础信息
-	init(data)
-  appSNC.onFirstAjax({
-    success (data) {
-      vm.firstAjax = true
-      store.set('activityList', data)
-			appSNC.hideLoading()
-		},
-		error (e) {
-			appSNC.hideLoading()
-			wintip(e)
-		}
-  })
+	// init(data)
+  // appSNC.onFirstAjax({
+  //   success (data) {
+  //     vm.firstAjax = true
+  //     store.set('activityList', data)
+	// 		appSNC.hideLoading()
+	// 	},
+	// 	error (e) {
+	// 		appSNC.hideLoading()
+	// 		wintip(e)
+	// 	}
+  // })
 })
 
 function init (data) {
