@@ -15,12 +15,13 @@ Vue.prototype.$snc = appSNC
 /* eslint-disable no-new */
 let vm = new Vue({
   el: '#app',
-  data: {firstAjax: false},
-  template: '<App :firstAjax="firstAjax"/>',
+  data: {firstAjax: false, user: {}},
+  template: '<App :firstAjax="firstAjax" :user="user"/>',
   components: {App}
 })
 
 appSNC.ready(data => {
+  vm.user = data.user || {};
   appSNC.hideLoading();
   // appSNC.login({
   //   success (data) {}

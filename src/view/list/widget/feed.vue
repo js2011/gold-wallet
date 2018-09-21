@@ -36,14 +36,19 @@
 <script>
 export default {
   props: {
+    user: Object,
     feed: Object
   },
   methods: {
     jump (url) {
-      this.$snc.URLNavigateTo({
-        url,
-        action: 'web'
-      })
+      if (this.user && this.user.phone) {
+        this.$snc.URLNavigateTo({
+          url,
+          action: 'web'
+        })
+        return;
+      }
+      this.$snc.URLNavigateTo({id: 'signup', actionType: 99, title: '注册'});
     }
   }
 };

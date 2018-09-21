@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "specVersion": "0.0.6",
+  "miniJsSDKVersion": "0.8",
+  "display": {
+    "navigationBarType": 1,
+    "showNavigationRightItem": true,
+    "enableOverflowScrolling": true
+  }
+}

@@ -1,22 +1,21 @@
 <template>
   <div class="main">
-    <!-- <feed-page v-if="firstAjax"></feed-page> -->
-    <feed-page :user="user"></feed-page>
+    <sign-in-page></sign-in-page>
   </div>
 </template>
 <script>
-import FeedPage from './pages'
+import SignInPage from './pages'
 export default{
   props: {
-    user: Object,
     firstAjax: Boolean
   },
-  components: {FeedPage}
+  components: {SignInPage}
 }
 </script>
 <style scoped>
   .main {
     max-width: 750px;
     margin: 0 auto;
+    background: #fff;
   }
 </style>

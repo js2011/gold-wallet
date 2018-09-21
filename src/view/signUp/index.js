@@ -2,25 +2,25 @@ import Vue from 'vue'
 import App from './App'
 import appSNC from './import'
 
-import * as apis from '~/apis';
-appSNC.init('app', apis);
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
 
 // 引入css
-import '~/css/skpt_mian.css-v=3.4.4.css'
-import '~/css/style.css-v=3.4.4.css'
+import '~/css/reset.css'
+import '~/css/iconfont.css'
 
 Vue.prototype.$snc = appSNC
 /* eslint-disable no-new */
 let vm = new Vue({
   el: '#app',
-  data: {firstAjax: false, user: {}},
-  template: '<App :firstAjax="firstAjax" :user="user"/>',
+  data: {firstAjax: false},
+  template: '<App :firstAjax="firstAjax"/>',
   components: {App}
 })
 
 appSNC.ready(data => {
-  vm.user = data.user || {};
-  appSNC.hideLoading()
+  // appSNC.hideLoading()
   // appSNC.enablePullDownRefresh({
   //   theme: 'worldcup',
   //   success (response) {

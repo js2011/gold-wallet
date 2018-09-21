@@ -48,9 +48,9 @@ mark, u, i, cite, em, address {font-style: normal; }
 @font-face {
   font-family: 'SinaHomeFont';
   src:
-    url('./fontsAll/SinaHomeFont.ttf?r45obs') format('truetype'),
-    url('./fontsAll/SinaHomeFont.woff?r45obs') format('woff'),
-    url('./fontsAll/SinaHomeFont.svg?r45obs#SinaHomeFont') format('svg');
+    url('./fonts/SinaHomeFont.ttf?r45obs') format('truetype'),
+    url('./fonts/SinaHomeFont.woff?r45obs') format('woff'),
+    url('./fonts/SinaHomeFont.svg?r45obs#SinaHomeFont') format('svg');
   font-weight: normal;
   font-style: normal;
 }

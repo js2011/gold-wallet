@@ -9,7 +9,7 @@
           </h4>
         </div>
         <!-- feed card -->
-        <feed v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
+        <feed :user="user" v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
       </section>
       <div style="height:3.8rem"></div>
       <!-- 系统通知 -->
@@ -17,12 +17,14 @@
   </div>
 </template>
 <script>
+import crossEvent from  "@mfelibs/universal-framework/src/libs/apis/crossEvent";
 import Feed from '../widget/feed.vue'
 const $ = require("jquery")
 // require("~/lib/common.js")
 // require("~/lib/swiper.js")
 // require("~/lib/borrow1.js")
 export default {
+  props: {user: Object},
   components: {Feed},
   data () {
     return {
@@ -66,6 +68,9 @@ export default {
           }
         })
       }
+    });
+    crossEvent.on('book.homeReload', data => {
+      vm.$snc.pageReload();
     })
   },
   methods: {

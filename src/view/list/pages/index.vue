@@ -11,7 +11,7 @@
       <section class="swiper-frt-mian swiper-container-horizontal">
         <div class="swiper-wrapper">
           <div class="swiper-slide slide-jk-box swiper-slide-active" style="width: 640px;">
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '爆款推荐')">
+            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '爆款推荐')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/1.png">
@@ -19,7 +19,7 @@
                 <p>爆款推荐</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '无视黑白')">
+            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '无视黑白')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/2.png">
@@ -27,7 +27,7 @@
                 <p>无视黑白</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '小额秒过')">
+            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '小额秒过')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/8.png">
@@ -35,7 +35,7 @@
                 <p>小额秒过</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('category', 'hybrid', '免审放款')">
+            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '免审放款')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/7.png">
@@ -71,21 +71,21 @@
                 </font>
               </font>
               <li>
-                <span @click="jump">
+                <span>
                   <font color="#FF7955">本平台不收取任何中介费用</font>
                 </span>
                 <font color="#FF7955">
                 </font>
               </li>
               <li>
-                <span @click="jump">
+                <span>
                   <font color="#FF7955">申请多家贷款可提升通过率</font>
                 </span>
                 <font color="#FF7955">
                 </font>
               </li>
               <li>
-                <span @click="jump">
+                <span>
                   <font color="#FF7955">本平台一律不向学生提供率借贷</font>
                 </span>
                 <font color="#FF7955">
@@ -131,7 +131,7 @@
                 </h4>
               </div>
               <!-- feed card -->
-              <feed v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
+              <feed :user="user" v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
             </section>
             <div style="height:3.8rem"></div>
             <!-- 系统通知 -->
@@ -142,12 +142,14 @@
   </div>
 </template>
 <script>
+import crossEvent from  "@mfelibs/universal-framework/src/libs/apis/crossEvent";
 import Feed from '../widget/feed.vue'
 const $ = require("jquery")
 // require("~/lib/common.js")
 require("~/lib/swiper.js")
 require("~/lib/borrow1.js")
 export default {
+  props: {user: Object},
   components: {Feed},
   data () {
     return {
@@ -194,11 +196,18 @@ export default {
           }
         })
       }
+    });
+    crossEvent.on('book.homeReload', data => {
+      vm.$snc.pageReload();
     })
   },
   methods: {
     jump (url, action = 'web', title) {
-      this.$snc.URLNavigateTo({id: url, url, action, title})
+      if ((this.user && this.user.phone) || action === 'hybrid') {
+        this.$snc.URLNavigateTo({id: url, url, action, title});
+        return;
+      }
+      this.$snc.URLNavigateTo({id: 'signup', actionType: 99, title: '注册'});
     }
   },
   mounted() {
