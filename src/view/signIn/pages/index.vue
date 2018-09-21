@@ -64,7 +64,6 @@ export default {
           develop: false
         },
         success(res) {
-          vm.code = res;
           if (res.code === 10200) {
             // vm.code = res.data;
             vm.coded = true;

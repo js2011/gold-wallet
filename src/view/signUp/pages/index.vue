@@ -21,7 +21,7 @@ export default {
   methods: {
     jump () {
       if (!this.state) return;
-      this.$snc.URLNavigateTo({id: 'signin', action: 'hybrid', title: '注册', ext: {phone: this.phone}});
+      this.$snc.URLNavigateTo({id: 'sign-in', action: 'hybrid', title: '注册', ext: {phone: this.phone}});
     }
   },
   computed: {

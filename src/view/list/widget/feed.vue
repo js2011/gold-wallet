@@ -48,7 +48,7 @@ export default {
         })
         return;
       }
-      this.$snc.URLNavigateTo({id: 'signup', actionType: 99, title: '注册'});
+      this.$snc.URLNavigateTo({id: 'sign-up', actionType: 99, title: '注册'});
     }
   }
 };
