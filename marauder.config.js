@@ -39,5 +39,5 @@ module.exports = {
       version: false
     }
   },
-  debug: true
+  debug: false
 }

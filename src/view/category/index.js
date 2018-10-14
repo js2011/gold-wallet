@@ -11,16 +11,22 @@ import '~/css/style.css-v=3.4.4.css'
 
 Vue.prototype.$snc = appSNC
 /* eslint-disable no-new */
-let vm = new Vue({
-  el: '#app',
-  data: {firstAjax: false, user: {}},
-  template: '<App :firstAjax="firstAjax" :user="user"/>',
-  components: {App}
-})
+// let vm = new Vue({
+//   el: '#app',
+//   data: {firstAjax: false, user: {}},
+//   template: '<App :firstAjax="firstAjax" :user="user"/>',
+//   components: {App}
+// })
 
 appSNC.ready(data => {
+  let vm = new Vue({
+    el: '#app',
+    data: {firstAjax: false, user: data.user || {}},
+    template: '<App :firstAjax="firstAjax" :user="user"/>',
+    components: {App}
+  })
   vm.user = data.user || {};
-  appSNC.hideLoading()
+  // appSNC.hideLoading()
   // appSNC.enablePullDownRefresh({
   //   theme: 'worldcup',
   //   success (response) {
