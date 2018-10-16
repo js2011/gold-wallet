@@ -41,7 +41,17 @@ export default {
   },
   methods: {
     jump (url) {
+      let vm = this;
       if (this.user && this.user.phone) {
+        this.$snc.fetch({
+          url: 'http://res.txingdai.com/log/app_active',
+          data: {
+            phone: vm.user.phone,
+            key: vm.feed.key
+          },
+          success (data) {},
+          error (e) {}
+        });
         this.$snc.URLNavigateTo({
           url,
           action: 'web'

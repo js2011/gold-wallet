@@ -203,7 +203,19 @@ export default {
   },
   methods: {
     jump (url, action = 'web', title) {
+      let vm = this;
       if ((this.user && this.user.phone) || action === 'hybrid') {
+        if (action === 'web') {
+          this.$snc.fetch({
+            url: 'http://res.txingdai.com/log/app_active',
+            data: {
+              phone: vm.user.phone,
+              key: vm.feed1.key
+            },
+            success (data) {},
+            error (e) {}
+          });
+        }
         this.$snc.URLNavigateTo({id: url, url, action, title});
         return;
       }
