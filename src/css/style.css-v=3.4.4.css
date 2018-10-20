@@ -6866,7 +6866,7 @@ input {
 
 .jk-wod-gshead {
 	padding: 0 1rem;
-	overflow: hidden;
+	/* overflow: hidden; */
 	margin-top: 0.7rem;
 	position: relative;
 }
@@ -6908,10 +6908,14 @@ input {
 }
 
 .jk-wod-gshead .wod-gshead-cnt p {
-	color: #999999;
+	display: inline-block;
+	border: 1px solid rgb(253, 178, 26);
+	margin: 0.2rem;
+	padding: 2px;
+	color: #FF7955;
 	font-size: 0.8rem;
 	font-weight: 500;
-	margin-top: 0.2rem;
+	/* margin-top: 0.2rem; */
 }
 
 .jk-wod-gshead .wod-gshead-btn {
@@ -10264,7 +10268,7 @@ input {
 	background-size:cover;
 }
 .swiper-frt-mian {
-	height: 8.35rem;
+	/* height: 8.35rem; */
 	position: relative;
 	z-index: 3;
 }

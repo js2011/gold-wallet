@@ -8,7 +8,7 @@
             <span>{{feed.name}}</span>
           </h2>
           <h3></h3>
-          <p>{{feed.detail.feature}}</p>
+          <p v-for="word in feed.detail.feature.split(/,|，/g)">{{word}}</p>
         </div>
         <span class="wod-gshead-btn">点我拿钱</span>
       </div>

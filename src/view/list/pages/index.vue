@@ -11,36 +11,78 @@
       <section class="swiper-frt-mian swiper-container-horizontal">
         <div class="swiper-wrapper">
           <div class="swiper-slide slide-jk-box swiper-slide-active" style="width: 640px;">
-            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '爆款推荐')">
+            <div class="slide-jk-bul" @click="jump('login_category_xinkouzi', 'hybrid', '今日新口子')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/1.png">
                 </i>
-                <p>爆款推荐</p>
+                <p>今日新口子</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '无视黑白')">
+            <div class="slide-jk-bul" @click="jump('login_category_5000yixia', 'hybrid', '5千以下')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/2.png">
                 </i>
-                <p>无视黑白</p>
+                <p>5千以下</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '小额秒过')">
+            <div class="slide-jk-bul" @click="jump('login_category_5000dao40000', 'hybrid', '5千-4万')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/8.png">
                 </i>
-                <p>小额秒过</p>
+                <p>5千-4万</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('login_category', 'hybrid', '免审放款')">
+            <div class="slide-jk-bul" @click="jump('login_category_40000dao1000000', 'hybrid', '4万-100万')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/7.png">
                 </i>
-                <p>免审放款</p>
+                <p>4万-100万</p>
+              </a>
+            </div>
+          </div>
+          <!-- <div class="swiper-slide slide-jk-box swiper-slide-next" style="width: 640px;">
+            <div class="slide-jk-bul">
+            </div>
+          </div> -->
+        </div>
+      </section>
+      <section class="swiper-frt-mian swiper-container-horizontal">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide-jk-box swiper-slide-active" style="width: 640px;padding-bottom:10px;">
+            <div class="slide-jk-bul" @click="jump('login_category_shoujihaojieqian', 'hybrid', '手机号借钱')">
+              <a href="javascript:;">
+                <i>
+                  <img src="../../../img/more5.png">
+                </i>
+                <p>手机号借钱</p>
+              </a>
+            </div>
+            <div class="slide-jk-bul" @click="jump('login_category_600zhimafen', 'hybrid', '600芝麻分借')">
+              <a href="javascript:;">
+                <i>
+                  <img src="../../../img/more6.png">
+                </i>
+                <p>600芝麻分借</p>
+              </a>
+            </div>
+            <div class="slide-jk-bul" @click="jump('login_category_buchazhengxin', 'hybrid', '不查征信')">
+              <a href="javascript:;">
+                <i>
+                  <img src="../../../img/more7.png">
+                </i>
+                <p>不查征信</p>
+              </a>
+            </div>
+            <div class="slide-jk-bul" @click="jump('login_category_shenfenzheng', 'hybrid', '身份证下款')">
+              <a href="javascript:;">
+                <i>
+                  <img src="../../../img/more8.png">
+                </i>
+                <p>身份证下款</p>
               </a>
             </div>
           </div>
@@ -70,7 +112,7 @@
                   </font>
                 </font>
               </font>
-              <li>
+              <!-- <li>
                 <span>
                   <font color="#FF7955">本平台不收取任何中介费用</font>
                 </span>
@@ -83,10 +125,17 @@
                 </span>
                 <font color="#FF7955">
                 </font>
-              </li>
+              </li> -->
               <li>
                 <span>
                   <font color="#FF7955">本平台一律不向学生提供率借贷</font>
+                </span>
+                <font color="#FF7955">
+                </font>
+              </li>
+              <li>
+                <span>
+                  <font color="#FF7955">急用钱，申请5个以上产品，99%下款</font>
                 </span>
                 <font color="#FF7955">
                 </font>
@@ -162,6 +211,11 @@ export default {
     this.$snc.fetch({
       // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
       url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
+      data: {
+        // boundleId: 'com.tengxin.youqianji',
+        // channel: 'appStore',
+        moudleId: 'login_list_shenzhen'
+      },
       success (data) {
         // debugger
         vm.feedData = data.data.list
@@ -216,7 +270,7 @@ export default {
             error (e) {}
           });
         }
-        this.$snc.URLNavigateTo({id: url, url, action, title});
+        this.$snc.URLNavigateTo({id: url, url, action, title, ext: {moudleId: url}});
         return;
       }
       this.$snc.URLNavigateTo({id: 'sign-up', actionType: 99, title: '注册'});

@@ -19,11 +19,13 @@ Vue.prototype.$snc = appSNC
 // })
 
 appSNC.ready(data => {
+  data.ext || (data.ext = {});
   let vm = new Vue({
     el: '#app',
     data: {firstAjax: false, user: data.user || {}},
     template: '<App :firstAjax="firstAjax" :user="user"/>',
-    components: {App}
+    components: {App},
+    provide: data
   })
   vm.user = data.user || {};
   // appSNC.hideLoading()

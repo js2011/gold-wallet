@@ -24,6 +24,7 @@ const $ = require("jquery")
 // require("~/lib/swiper.js")
 // require("~/lib/borrow1.js")
 export default {
+  inject: ['ext'],
   props: {user: Object},
   components: {Feed},
   data () {
@@ -36,9 +37,13 @@ export default {
     this.$snc.fetch({
       // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
       url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
+      data: {
+        moudleId: vm.ext.moudleId
+      },
       success (data) {
         // debugger
-        vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
+        // vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
+        vm.feedData = data.data.list
       },
       error (e) {
         // debugger
@@ -55,8 +60,12 @@ export default {
         vm.$snc.fetch({
           // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
           url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
+          data: {
+            moudleId: vm.ext.moudleId
+          },
           success (data) {
-            vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
+            // vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
+            vm.feedData = data.data.list
             vm.$snc.stopPullDownRefresh({
               msg: `更新了${data.data.list.length}条信息`
             })
