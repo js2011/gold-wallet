@@ -161,7 +161,7 @@ export default {
     let vm = this
     this.$snc.fetch({
       // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-      url: 'http://res.txingdai.com/appinfo/b114e4027afc43b89adcded84d470aa5?ts=1531811436150&start=0&limit=100',
+      url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
       success (data) {
         // debugger
         vm.feedData = data.data.list
@@ -181,7 +181,7 @@ export default {
       success () {
         vm.$snc.fetch({
           // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-          url: 'http://res.txingdai.com/appinfo/b114e4027afc43b89adcded84d470aa5?ts=1531811436150&start=0&limit=100',
+          url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
           success (data) {
             vm.feedData = data.data.list
             vm.feed1 = vm.feedData.splice(0, 1)[0]
@@ -209,7 +209,7 @@ export default {
           this.$snc.fetch({
             url: 'http://res.txingdai.com/log/app_active',
             data: {
-              phone: vm.user.phone,
+              // phone: vm.user.phone,
               key: vm.feed1.key
             },
             success (data) {},

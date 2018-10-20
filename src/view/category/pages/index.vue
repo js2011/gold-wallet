@@ -35,7 +35,7 @@ export default {
     let vm = this
     this.$snc.fetch({
       // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-      url: 'http://res.txingdai.com/appinfo/b114e4027afc43b89adcded84d470aa5?ts=1531811436150&start=0&limit=100',
+      url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
       success (data) {
         // debugger
         vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
@@ -54,7 +54,7 @@ export default {
       success () {
         vm.$snc.fetch({
           // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-          url: 'http://res.txingdai.com/appinfo/b114e4027afc43b89adcded84d470aa5?ts=1531811436150&start=0&limit=100',
+          url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
           success (data) {
             vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
             vm.$snc.stopPullDownRefresh({

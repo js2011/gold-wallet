@@ -46,7 +46,7 @@ export default {
         this.$snc.fetch({
           url: 'http://res.txingdai.com/log/app_active',
           data: {
-            phone: vm.user.phone,
+            // phone: vm.user.phone,
             key: vm.feed.key
           },
           success (data) {},
