@@ -38,7 +38,7 @@ export default {
       // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
       url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
       data: {
-        moudleId: vm.ext.moudleId
+        moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
       },
       success (data) {
         // debugger
@@ -61,7 +61,7 @@ export default {
           // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
           url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
           data: {
-            moudleId: vm.ext.moudleId
+            moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
           },
           success (data) {
             // vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
