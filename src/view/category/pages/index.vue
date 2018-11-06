@@ -11,6 +11,15 @@
         <!-- feed card -->
         <feed :user="user" v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
       </section>
+      <!-- 推荐专题 -->
+      <div class="tuijian" v-show="feedData.length">
+        <div class="title">推荐专题</div>
+        <div class="tuijian-img" @click="openHybrid">
+          <img src="../../../img/zhuanti1.png">
+          <img src="../../../img/zhuanti2.png">
+          <img src="../../../img/zhuanti3.png">
+        </div>
+      </div>
       <div style="height:3.8rem"></div>
       <!-- 系统通知 -->
     </article>
@@ -38,6 +47,8 @@ export default {
       // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
       url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
       data: {
+        // boundleId: 'com.tengxin.youqianji',
+        // channel: 'appStore',
         moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
       },
       success (data) {
@@ -83,6 +94,15 @@ export default {
     })
   },
   methods: {
+    openHybrid() {
+      let vm = this;
+      this.$snc.URLNavigateTo({
+        id: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen',
+        action: 'hybrid',
+        title: '推荐专题',
+        ext: {moudleId: vm.ext.moudleId}
+      });
+    },
     jump (url) {
       this.$snc.URLNavigateTo({
         url,
@@ -97,5 +117,24 @@ export default {
 <style scoped>
   .pt-rsd-list {
     margin-top: 0;
+  }
+  .tuijian {
+    background: #fff;
+    padding: 10px 0;
+  }
+  .tuijian .title {
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+  }
+  .tuijian .tuijian-img {
+    display: flex;
+  }
+  .tuijian .tuijian-img img {
+    flex: 1;
+    width: 100px;
+    height: 100%;
+    margin: 0 3px;
   }
 </style>
