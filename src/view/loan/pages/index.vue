@@ -4,7 +4,7 @@
       <canvas id="myCanvas" width="200" height="200" style="margin:20px;"></canvas>
     </div> -->
     <div class="banner">
-      <img src="../../../img/8000.jpg">
+      <img src="../../../img/8000_1.jpeg">
     </div>
     <div class="content">
       <div class="step">
@@ -38,6 +38,7 @@ export default {
   props: { user: Object },
   data() {
     return {
+      isLogin: false,
       // background: require("../../../img/f0.png"),
       records: [
         {
@@ -155,7 +156,27 @@ export default {
       ]
     };
   },
-  created() {},
+  created() {
+    let vm = this;
+    this.$snc.fetch({
+      url: "http://res.txingdai.com/account/validate",
+      method: "GET",
+      data: {
+        phone: vm.user.phone
+      },
+      success(res) {
+        if (res.code === 10200) {
+          if (res.data === 'false' || !res.data) {
+            vm.isLogin = false;
+            return;
+          }
+          vm.isLogin = res.data;
+        } else {
+          vm.isLogin = false;
+        }
+      }
+    });
+  },
   methods: {
     initCanvas(moneyCount) {
       var title = null;
@@ -200,6 +221,7 @@ export default {
       ctx.stroke();
     },
     jump(url) {
+      if (!isLogin) return;
       this.$snc.URLNavigateTo({
         url,
         action: "web"
@@ -224,16 +246,16 @@ export default {
 }
 .step .icon {
   display: inline-block;
-  font-size: .35rem;
+  font-size: 0.35rem;
   color: #fff;
   text-align: center;
   /* background: #ff530f; */
   background: rgb(244, 133, 52);
-  width: .5rem;
-  height: .5rem;
-  line-height: .5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
   border-radius: 50%;
-  margin: 0 .1rem;
+  margin: 0 0.1rem;
 }
 .loanBtn {
   height: 1rem;
@@ -243,7 +265,7 @@ export default {
   /* padding: 0 .4rem; */
   border-radius: 1rem;
   background: linear-gradient(90deg, rgb(248, 173, 19), rgba(248, 229, 11, 1));
-  font-size: .35rem;
+  font-size: 0.35rem;
   /* font-weight: 700; */
   text-align: center;
   box-shadow: 0.01rem 0.03rem 0.2rem rgb(248, 173, 19);
@@ -267,7 +289,7 @@ export default {
   height: 35vw;
   overflow: hidden;
   text-align: center;
-  margin: .2rem;
+  margin: 0.2rem;
 }
 .record .scroll {
   animation: gogogo 20s steps(200) infinite;

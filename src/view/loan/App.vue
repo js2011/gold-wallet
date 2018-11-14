@@ -1,17 +1,17 @@
 <template>
   <div class="main">
     <!-- <feed-page v-if="firstAjax"></feed-page> -->
-    <feed-page :user="user"></feed-page>
+    <loan-page :user="user"></loan-page>
   </div>
 </template>
 <script>
-import FeedPage from './pages'
+import LoanPage from './pages'
 export default{
   props: {
     user: Object,
     firstAjax: Boolean
   },
-  components: {FeedPage}
+  components: {LoanPage}
 }
 </script>
 <style scoped>

@@ -13,14 +13,14 @@
       </section>
       <!-- 推荐专题 -->
       <div class="tuijian" v-show="feedData.length">
-        <div class="title">推荐专题</div>
-        <div class="tuijian-img" @click="openHybrid">
-          <img src="../../../img/zhuanti1.png">
-          <img src="../../../img/zhuanti2.png">
-          <img src="../../../img/zhuanti3.png">
+        <div class="title"><div>&nbsp;</div>推荐专题</div>
+        <div class="tuijian-img">
+          <img src="../../../img/zhuanti1.png" @click="openHybrid('login_category_xinkouzituijian')">
+          <img src="../../../img/zhuanti2.png" @click="openHybrid('login_category_gaotongguotuijian')">
+          <img src="../../../img/zhuanti3.png" @click="openHybrid('login_category_jinrirementuijian')">
         </div>
       </div>
-      <div style="height:3.8rem"></div>
+      <!-- <div style="height:3.8rem"></div> -->
       <!-- 系统通知 -->
     </article>
   </div>
@@ -94,13 +94,13 @@ export default {
     })
   },
   methods: {
-    openHybrid() {
+    openHybrid(id) {
       let vm = this;
       this.$snc.URLNavigateTo({
-        id: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen',
+        id,
         action: 'hybrid',
         title: '推荐专题',
-        ext: {moudleId: vm.ext.moudleId}
+        ext: {moudleId: id}
       });
     },
     jump (url) {
@@ -123,10 +123,18 @@ export default {
     padding: 10px 0;
   }
   .tuijian .title {
-    text-align: center;
-    font-size: 18px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    border-top: 5px solid #eee;
+    margin-bottom: 5px;
+    padding-top: 5px;
+  }
+  .tuijian .title div {
+    display: inline-block;
+    width: 3px;
+    height: 100%;
+    background: orange;
+    margin: 0 5px;
   }
   .tuijian .tuijian-img {
     display: flex;
