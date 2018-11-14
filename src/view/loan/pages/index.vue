@@ -160,9 +160,11 @@ export default {
     let vm = this;
     this.$snc.fetch({
       url: "http://res.txingdai.com/account/validate",
-      method: "GET",
+      method: "POST",
       data: {
-        phone: vm.user.phone
+        // boundleId: 'com.tengxin.youqianji',
+        // channel: 'appStore',
+        // phone: vm.user.phone || '18600885297'
       },
       success(res) {
         if (res.code === 10200) {
@@ -221,7 +223,7 @@ export default {
       ctx.stroke();
     },
     jump(url) {
-      if (!isLogin) return;
+      if (!this.isLogin) return;
       this.$snc.URLNavigateTo({
         url,
         action: "web"
