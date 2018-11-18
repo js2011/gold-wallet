@@ -11,6 +11,7 @@
   "dependencies": {
     "@mfelibs/universal-framework": "^0.3.91",
     "jquery": "^1.8.2",
+    "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.13",
     "swiper": "^4.3.5",
     "vue": "^2.5.3",

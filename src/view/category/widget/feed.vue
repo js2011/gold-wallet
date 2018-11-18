@@ -52,10 +52,16 @@ export default {
           success (data) {},
           error (e) {}
         });
+        // this.$snc.URLNavigateTo({
+        //   url,
+        //   action: 'web'
+        // })
         this.$snc.URLNavigateTo({
-          url,
-          action: 'web'
-        })
+          id: 'detail',
+          action: 'hybrid',
+          title: '详情',
+          ext: { detail: vm.feed }
+        });
         return;
       }
       this.$snc.URLNavigateTo({id: 'sign-up', actionType: 99, title: '注册'});

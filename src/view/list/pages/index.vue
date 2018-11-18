@@ -274,6 +274,13 @@ export default {
             success (data) {},
             error (e) {}
           });
+          this.$snc.URLNavigateTo({
+            id: 'detail',
+            action: 'hybrid',
+            title: '详情',
+            ext: { detail: vm.feed1 }
+          });
+          return;
         }
         this.$snc.URLNavigateTo({id: url, url, action, title, ext: {moudleId: url}});
         return;
