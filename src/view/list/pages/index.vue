@@ -19,28 +19,28 @@
                 <p>今日新口子</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('login_category_5000yixia', 'hybrid', '5千以下')">
+            <div class="slide-jk-bul" @click="jump('login_category_5000yixia', 'hybrid', '2千以下')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/2.png">
                 </i>
-                <p>5千以下</p>
+                <p>2千以下</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('login_category_5000dao40000', 'hybrid', '5千-4万')">
+            <div class="slide-jk-bul" @click="jump('login_category_5000dao40000', 'hybrid', '2千-1万')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/8.png">
                 </i>
-                <p>5千-4万</p>
+                <p>2千-1万</p>
               </a>
             </div>
-            <div class="slide-jk-bul" @click="jump('login_category_40000dao1000000', 'hybrid', '4万-100万')">
+            <div class="slide-jk-bul" @click="jump('login_category_40000dao1000000', 'hybrid', '1万以上')">
               <a href="javascript:;">
                 <i>
                   <img src="../../../img/7.png">
                 </i>
-                <p>4万-100万</p>
+                <p>1万以上</p>
               </a>
             </div>
           </div>
@@ -93,7 +93,7 @@
         </div>
       </section>
       <!-- 小额极速贷 -->
-      <section class="speedloan-info-list">
+      <!-- <section class="speedloan-info-list">
         <div class="jk-sdln-main">
           <h1 class="speedloan-js-head">
             <img src="../../../img/speedloan_infoico.png">
@@ -102,7 +102,7 @@
           <p class="sdln-max-je">{{100000}}
             <span>元</span>
           </p>
-          <!-- 代码 开始 -->
+          <!- 代码 开始 ->
           <section class="sdlninfo-user-li">
             <i></i>
             <ul style="margin-top: 0px;">
@@ -112,7 +112,7 @@
                   </font>
                 </font>
               </font>
-              <!-- <li>
+              <li>
                 <span>
                   <font color="#FF7955">本平台不收取任何中介费用</font>
                 </span>
@@ -125,7 +125,7 @@
                 </span>
                 <font color="#FF7955">
                 </font>
-              </li> -->
+              </li>
               <li>
                 <span>
                   <font color="#FF7955">本平台一律不向学生提供率借贷</font>
@@ -168,7 +168,7 @@
             </font>
           </font>
         </font>
-      </section>
+      </section> -->
       <font color="#FF7955">
         <font color="#FF7955">
           <font color="#FF7955">
@@ -219,7 +219,7 @@ export default {
       success (data) {
         // debugger
         vm.feedData = data.data.list
-        vm.feed1 = vm.feedData.splice(0, 1)[0]
+        // vm.feed1 = vm.feedData.splice(0, 1)[0]
       },
       error (e) {
         // debugger
@@ -243,7 +243,7 @@ export default {
           },
           success (data) {
             vm.feedData = data.data.list
-            vm.feed1 = vm.feedData.splice(0, 1)[0]
+            // vm.feed1 = vm.feedData.splice(0, 1)[0]
             vm.$snc.stopPullDownRefresh({
               msg: `更新了${data.data.list.length}条信息`
             })

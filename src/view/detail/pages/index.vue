@@ -9,7 +9,7 @@
           <div class="jp-head-top-right">
             <h1>{{detail.name}}</h1>
             <p class="jp-label">
-              <span v-for="(word, i) in detail.detail.feature.split(/,|，/g)" :class="`back${i + 1}`" :key="i">{{word}}</span>
+              <span v-for="(word, i) in detail.detail.feature.split(/,|，/g)" :class="`back${i > 2 ? 3 : i + 1}`" :key="i">{{word}}</span>
               <!-- <span class="back1">小额极速贷</span>
               <span class="back2">低门槛</span>
               <span class="back3">新口子</span> -->
@@ -38,6 +38,46 @@
         </div>
       </div>
       <div class="jp-progess">
+        <p class="jp-main-title">
+          <img src="../../../assets/img/jpico01.png">
+          <span>申请过程</span>
+        </p>
+        <ul class="jp-progess-main">
+          <li class="jp-progess-li">
+            <img src="../../../assets/img/jpico03.png">
+            <p>身份认证</p>
+          </li>
+          <li class="aright">
+            <img  src="../../../assets/img/aright.png">
+          </li>
+          <li class="jp-progess-li">
+            <img src="../../../assets/img/jpico04.png">
+            <p>手机号认证</p>
+          </li>
+          <li class="aright">
+            <img  src="../../../assets/img/aright.png">
+          </li>
+          <li class="jp-progess-li">
+            <img src="../../../assets/img/jpico06.png">
+            <p>通讯录认证</p>
+          </li>
+          <li class="aright">
+            <img  src="../../../assets/img/aright.png">
+          </li>
+          <li class="jp-progess-li">
+            <img src="../../../assets/img/jpico05.png">
+            <p>银行卡绑定</p>
+          </li>
+          <!-- <li class="aright">
+            <img src="../../../assets/img/aright.png">
+          </li>
+          <li class="jp-progess-li">
+            <img src="../../../assets/img/jpico07.png">
+            <p>芝麻授信</p>
+          </li> -->
+        </ul>
+      </div>
+      <div class="jp-progess jp-condition">
         <p class="jp-main-title">
           <img src="../../../assets/img/jpico02.png">
           <span>申请资格</span>
@@ -90,11 +130,12 @@ export default {
 
 <style>
 .jp-box {
+  padding-bottom: 1.2rem;
 }
 
 .jp-back-top {
   background: #fdd802;
-  height: 1.28rem;
+  height: 1.5rem;
 }
 
 .jp-head {
@@ -125,8 +166,8 @@ export default {
 }
 
 .jp-head-top-right h1 {
-  margin-top: 0.1rem;
-  font-size: 0.373333rem;
+  /* margin-top: 0.1rem; */
+  font-size: 0.5rem;
   font-weight: bold;
 }
 
@@ -258,7 +299,7 @@ export default {
   padding-left: 0.9rem;
   margin-top: 0.4rem;
   padding-bottom: 0.2rem;
-  font-size: 0.32rem;
+  font-size: 0.35rem;
   color: #434343;
   font-weight: 400;
   line-height: 0.586667rem;
@@ -266,6 +307,8 @@ export default {
 }
 
 .jp-btn {
+  position: fixed;
+  bottom: 0;
   width: 100%;
   height: 1.2rem;
   background: -webkit-linear-gradient(left, #fcb913, #fce604);

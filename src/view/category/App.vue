@@ -18,5 +18,6 @@ export default{
   .main {
     max-width: 750px;
     margin: 0 auto;
+    height: 100%;
   }
 </style>

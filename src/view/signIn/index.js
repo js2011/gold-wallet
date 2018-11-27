@@ -28,7 +28,7 @@ appSNC.ready(data => {
     components: {App},
     provide: data
   })
-  appSNC.hideLoading()
+  // appSNC.hideLoading()
   // appSNC.enablePullDownRefresh({
   //   theme: 'worldcup',
   //   success (response) {

@@ -9,7 +9,8 @@
           </h4>
         </div>
         <!-- feed card -->
-        <feed :user="user" v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
+        <loading v-if="!feedData.length"></loading>
+        <feed v-else :user="user" v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
       </section>
       <!-- 推荐专题 -->
       <div class="tuijian" v-show="feedData.length">
@@ -28,6 +29,7 @@
 <script>
 import crossEvent from  "@mfelibs/universal-framework/src/libs/apis/crossEvent";
 import Feed from '../widget/feed.vue'
+import Loading from '../widget/loading.vue'
 const $ = require("jquery")
 // require("~/lib/common.js")
 // require("~/lib/swiper.js")
@@ -35,7 +37,7 @@ const $ = require("jquery")
 export default {
   inject: ['ext'],
   props: {user: Object},
-  components: {Feed},
+  components: {Feed, Loading},
   data () {
     return {
       feedData: []
@@ -115,6 +117,9 @@ export default {
 };
 </script>
 <style scoped>
+  .feed-list {
+    height: 100%;
+  }
   .pt-rsd-list {
     margin-top: 0;
   }
