@@ -9,8 +9,12 @@
           </h4>
         </div>
         <!-- feed card -->
-        <loading v-if="!feedData.length"></loading>
+        <loading v-if="showLoading"></loading>
         <feed v-else :user="user" v-for="feed in feedData" :feed="feed" :key="feed.key"></feed>
+        <div v-show="showRetry" class="retry">
+          <img src="../../../img/jiazaishibai.png">
+          <div class="retry_btn" @click="retry">网络异常，点击重试</div>
+        </div>
       </section>
       <!-- 推荐专题 -->
       <div class="tuijian" v-show="feedData.length">
@@ -40,28 +44,14 @@ export default {
   components: {Feed, Loading},
   data () {
     return {
+      showLoading: true,
+      showRetry: false,
       feedData: []
     }
   },
   created () {
     let vm = this
-    this.$snc.fetch({
-      // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-      url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
-      data: {
-        // boundleId: 'com.tengxin.youqianji',
-        // channel: 'appStore',
-        moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
-      },
-      success (data) {
-        // debugger
-        // vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
-        vm.feedData = data.data.list
-      },
-      error (e) {
-        // debugger
-      }
-    })
+    vm.loadData();
     vm.$snc.enablePullDownRefresh({
       // theme: 'worldcup',
       success (response) {
@@ -70,25 +60,11 @@ export default {
     });
     vm.$snc.onPullDownRefresh({
       success () {
-        vm.$snc.fetch({
-          // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
-          url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
-          data: {
-            moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
-          },
-          success (data) {
-            // vm.feedData = data.data.list.sort(() => Math.random() >= 0.5)
-            vm.feedData = data.data.list
-            vm.$snc.stopPullDownRefresh({
-              msg: `更新了${data.data.list.length}条信息`
-            })
-          },
-          error (e) {
-            vm.$snc.stopPullDownRefresh({
-              msg: `更新失败`
-            })
-          }
-        })
+        vm.loadData().then(data => {
+          vm.$snc.stopPullDownRefresh({
+            msg: data
+          })
+        });
       }
     });
     crossEvent.on('book.homeReload', data => {
@@ -96,6 +72,42 @@ export default {
     })
   },
   methods: {
+    loadData() {
+      let vm = this;
+      vm.showLoading = true;
+      vm.showRetry = false;
+      return new Promise((resolve, reject) => {
+        vm.$snc.fetch({
+          // url: 'http://res.txingdai.com/site/0b487a85dea0a75074aa1dce6834149d?ts=1531811436150&start=0&limit=100',
+          url: 'http://res.txingdai.com/appinfo/?ts=1531811436150&start=0&limit=100',
+          data: {
+            // boundleId: 'com.tengxin.youqianji',
+            // channel: 'appStore',
+            moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
+          },
+          success (res) {
+            // debugger
+            // vm.feedData = res.data.list.sort(() => Math.random() >= 0.5)
+            if (res.code === 10200) {
+              vm.feedData = res.data.list
+            } else {
+              vm.showRetry = true
+            }
+            vm.showLoading = false
+            resolve('更新成功~')
+          },
+          error (e) {
+            // debugger
+            vm.showLoading = false;
+            vm.showRetry = true;
+            reject('更新失败~');
+          }
+        })
+      })
+    },
+    retry() {
+      this.loadData();
+    },
     openHybrid(id) {
       let vm = this;
       this.$snc.URLNavigateTo({
@@ -149,5 +161,26 @@ export default {
     width: 100px;
     height: 100%;
     margin: 0 3px;
+  }
+  .retry {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 70%;
+    height: 10rem;
+    text-align: center;
+  }
+  .retry img {
+    width: 5rem;
+  }
+  .retry_btn {
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    background: #FFF;
+    margin-top: 2rem;
   }
 </style>
