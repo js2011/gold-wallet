@@ -74,7 +74,9 @@ export default {
   methods: {
     loadData() {
       let vm = this;
-      vm.showLoading = true;
+      if (vm.feedData.length === 0) {
+        vm.showLoading = true;
+      }
       vm.showRetry = false;
       return new Promise((resolve, reject) => {
         vm.$snc.fetch({
@@ -83,7 +85,7 @@ export default {
           data: {
             // boundleId: 'com.tengxin.youqianji',
             // channel: 'appStore',
-            moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
+            moudleId: vm.ext.moudleId || 'login_baokuan_shenzhen'
           },
           success (res) {
             // debugger
