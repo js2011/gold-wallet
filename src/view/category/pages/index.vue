@@ -85,6 +85,7 @@ export default {
           data: {
             // boundleId: 'com.tengxin.youqianji',
             // channel: 'appStore',
+            // moudleId: vm.ext.moudleId || 'login_xiakuanbibei_shenzhen'
             moudleId: vm.ext.moudleId || 'login_baokuan_shenzhen'
           },
           success (res) {

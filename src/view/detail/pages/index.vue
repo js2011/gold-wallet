@@ -95,8 +95,9 @@
     </div>
 </template>
 <script>
+import crossEvent from "@mfelibs/universal-framework/src/libs/apis/crossEvent";
 export default {
-  inject: ["ext"],
+  inject: ["ext", "user"],
   data() {
     return {
       detail: this.ext.detail || {
@@ -119,11 +120,31 @@ export default {
   },
   methods: {
     jump(url) {
-      this.$snc.URLNavigateTo({
-        url,
-        action: "web"
-      });
+      let vm = this;
+      if (this.user && this.user.phone) {
+        this.$snc.fetch({
+          url: 'http://res.txingdai.com/log/app_active',
+          data: {
+            // phone: vm.user.phone,
+            key: vm.detail.key
+          },
+          success (data) {},
+          error (e) {}
+        });
+        this.$snc.URLNavigateTo({
+          url,
+          action: "web"
+        });
+        return;
+      }
+      this.$snc.URLNavigateTo({id: 'sign-up', actionType: 99, title: '注册'});
     }
+  },
+  created() {
+    let vm = this;
+    crossEvent.on('book.signIn', data => {
+      vm.$snc.pageReload();
+    })
   }
 };
 </script>

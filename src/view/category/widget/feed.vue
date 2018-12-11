@@ -42,29 +42,24 @@ export default {
   methods: {
     jump (url) {
       let vm = this;
-      if (this.user && this.user.phone) {
-        this.$snc.fetch({
-          url: 'http://res.txingdai.com/log/app_active',
-          data: {
-            // phone: vm.user.phone,
-            key: vm.feed.key
-          },
-          success (data) {},
-          error (e) {}
-        });
-        // this.$snc.URLNavigateTo({
-        //   url,
-        //   action: 'web'
-        // })
-        this.$snc.URLNavigateTo({
-          id: 'detail',
-          action: 'hybrid',
-          title: '详情',
-          ext: { detail: vm.feed }
-        });
-        return;
-      }
-      this.$snc.URLNavigateTo({id: 'sign-up', actionType: 99, title: '注册'});
+      // if (this.user && this.user.phone) {
+      //   this.$snc.fetch({
+      //     url: 'http://res.txingdai.com/log/app_active',
+      //     data: {
+      //       // phone: vm.user.phone,
+      //       key: vm.feed.key
+      //     },
+      //     success (data) {},
+      //     error (e) {}
+      //   });
+      // }
+      this.$snc.URLNavigateTo({
+        id: 'detail',
+        action: 'hybrid',
+        title: '详情',
+        ext: { detail: vm.feed }
+      });
+      // this.$snc.URLNavigateTo({id: 'sign-up', actionType: 99, title: '注册'});
     }
   }
 };
