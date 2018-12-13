@@ -26,7 +26,8 @@ export default {
   },
   computed: {
     state() {
-      return /^1[3|4|5|8][0-9]\d{8}$/.test(this.phone);
+      // return /^1[3|4|5|8][0-9]\d{8}$/.test(this.phone);
+      return /^\d{11}$/.test(this.phone);
     }
   }
 }
