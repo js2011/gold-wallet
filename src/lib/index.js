@@ -119,7 +119,8 @@ export default {
       }
     } else {
       // 通用接口
-      if (response.errCode == '0') {
+      if (response.errCode == '0' || response.errCode === undefined) {
+        // 兼容不同情况 by zhaopeng
         this.isFunction(postHook) && postHook(response);
         options.success && options.success(response.data, options);
         resolve(response.data);
