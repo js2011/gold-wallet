@@ -57,7 +57,7 @@ export default {
       let vm = this
       if (vm.coded) return;
       this.$snc.fetch({
-        url: 'http://res.txingdai.com/account/code',
+        url: 'http://res.txingdai.com/account/app_code',
         method: 'GET',
         data: {
           phone: vm.ext.phone,
